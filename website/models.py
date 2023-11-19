@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django_summernote.fields import SummernoteTextField
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -11,7 +12,7 @@ class UserProfile(models.Model):
 
 class Game(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    description = SummernoteTextField()  
     release_date = models.DateField()
     genre = models.CharField(max_length=100)
     platform = models.CharField(max_length=50)
@@ -24,7 +25,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     rating = models.IntegerField()
-    content = models.TextField()
+    content = SummernoteTextField()  
     date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -33,7 +34,7 @@ class Review(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
-    content = models.TextField()
+    content = SummernoteTextField()  
     date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -42,7 +43,7 @@ class Comment(models.Model):
 class AdminActivity(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     activity_type = models.CharField(max_length=100)
-    activity_description = models.TextField()
+    activity_description = SummernoteTextField() 
     date_performed = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
