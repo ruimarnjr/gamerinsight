@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-ruimarnjr-gamerinsight-vwasnxl16v6.ws-eu106.gitpod.io', 'https://gamerinsight-3420a19788ac.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-ruimarnjr-gamerinsight-vwasnxl16v6.ws-eu106.gitpod.io', 'gamerinsight-3420a19788ac.herokuapp.com', 'localhost']
 
 
 # Application definition
