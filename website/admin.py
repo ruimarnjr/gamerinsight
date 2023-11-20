@@ -28,6 +28,10 @@ class CommentAdmin(SummernoteModelAdmin):
     list_display = ('user', 'review', 'date_posted')
     search_fields = ['user__username', 'review__game__title']
     list_filter = ('date_posted',)
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)
 
 class AdminActivityAdmin(SummernoteModelAdmin):
     summernote_fields = ('activity_description',)
