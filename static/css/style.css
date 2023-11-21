@@ -1,0 +1,157 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+}
+
+.brand {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.red-o {
+    color: #e84610;
+}
+
+.thin {
+    font-weight: 300;
+}
+
+.light-bg {
+    background-color: #fff;
+    color: #333;
+}
+
+.dark-bg {
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.main-bg {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.card {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.image-flash {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #23bbbb;
+    color: #fff;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.author {
+    color: #333;
+    margin: 4px;
+    text-transform: uppercase;
+}
+
+.masthead {
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    height: 50vh;
+    width: 100%;
+}
+
+.masthead-text {
+    background-color: #1f1f1f;
+    color: #fff;
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.masthead-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.masthead-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background: #1f1f1f;
+    border-radius: 8px;
+}
+
+.post-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.post-link:hover,
+.page-link {
+    color: #e84610;
+}
+
+.post-title {
+    margin-top: 10%;
+    margin-left: 5%;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.post-subtitle {
+    margin-left: 5%;
+    color: #666;
+}
+
+.btn-signup {
+    background-color: #23bbbb;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #1a8f99;
+}
+
+.link {
+    color: #23bbbb;
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: #1a8f99;
+    text-decoration: underline;
+}
+
+.btn-like {
+    color: #e84610;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #ff5722;
+}
