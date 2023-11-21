@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import generic
+from django.views import generic, View
 from .models import Game
 
 class GameListView(generic.ListView):
     model = Game
-    template_name = 'game_list.html'
+    template_name = 'index.html'
     context_object_name = 'games'
 
 # class GameDetailView(DetailView):

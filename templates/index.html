@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        {% for game in games %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="image-container">
+                        {% if "placeholder" in game.cover_image.url %}
+                        <img class="card-img-top"
+                            src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                        {% else %}
+                        <img class="card-img-top" src="{{ game.cover_image.url }}">
+                        {% endif %}
+                        <div class="image-flash">
+                            <p class="developer">Developer: {{ game.developer }}</p>
+                        </div>
+                    </div>
+                    <!-- Remove the link to game_detail -->
+                    <h2 class="card-title">{{ game.title }}</h2>
+                    <p class="card-text">{{ game.description }}</p>
+                    <hr />
+                    <p class="card-text text-muted h6">{{ game.release_date }} <i class="fas fa-star"></i>
+                        {{ game.rating }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

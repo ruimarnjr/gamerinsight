@@ -4,7 +4,7 @@
 <html class="h-100">
 
 <head>
-    <title>Gamer Insight</title>
+    <title>CodeStar Blog</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -26,7 +26,8 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Gamer<span class="red-o">|</span>Insight</span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">c<span class="red-o">o</span>de<span
+                        class="thin">|star</span></span></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,14 +37,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
-                    <!-- Add more navigation items as needed for your game blog -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <!-- Adjust the login and logout links based on user authentication -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="#">Logout</a>
@@ -58,7 +51,7 @@
                     {% endif %}
                 </ul>
                 <span class="navbar-text text-muted">
-                    Welcome to the Gamer Insight
+                    adventures of a software developer
                 </span>
             </div>
         </div>
@@ -66,19 +59,18 @@
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
-        <!-- Your game blog content goes here -->
+        <!-- Content Goes here -->
         {% endblock content %}
     </main>
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">Made by Game Enthusiasts</p>
+        <p class="m-0 text-center text-white">Made by Code Instituters</p>
         <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
-    <!-- Add your JavaScript scripts as needed -->
 </body>
 
 </html>
