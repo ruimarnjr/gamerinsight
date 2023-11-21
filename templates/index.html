@@ -8,22 +8,22 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="image-container">
-                        {% if "placeholder" in game.cover_image.url %}
-                        <img class="card-img-top"
-                            src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                        {% if game.image %}
+                        <img class="card-img-top" src="{{ game.image.url }}" alt="{{ game.title }}">
                         {% else %}
-                        <img class="card-img-top" src="{{ game.cover_image.url }}">
+                        <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Placeholder Image" width="100%">
                         {% endif %}
                         <div class="image-flash">
                             <p class="developer">Developer: {{ game.developer }}</p>
                         </div>
                     </div>
-                    <!-- Remove the link to game_detail -->
-                    <h2 class="card-title">{{ game.title }}</h2>
-                    <p class="card-text">{{ game.description }}</p>
-                    <hr />
-                    <p class="card-text text-muted h6">{{ game.release_date }} <i class="fas fa-star"></i>
-                        {{ game.rating }}</p>
+                    <div class="game-details">
+                        <h2 class="card-title">{{ game.title }}</h2>
+                        <p class="card-text">{{ game.description }}</p>
+                        <hr />
+                        <p class="card-text text-muted h6">{{ game.release_date }} <i class="fas fa-star"></i>
+                            {{ game.rating }}</p>
+                    </div>
                 </div>
             </div>
         </div>

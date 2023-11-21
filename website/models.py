@@ -12,6 +12,7 @@ class UserProfile(models.Model):
 
 class Game(models.Model):
     title = models.CharField(max_length=255)
+    featured_image = CloudinaryField('image', default='placeholder')
     description = SummernoteTextField()  
     release_date = models.DateField()
     genre = models.CharField(max_length=100)
