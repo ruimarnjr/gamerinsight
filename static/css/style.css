@@ -1,18 +1,18 @@
 body {
-    background-color: #f4f4f4; /* Light background color */
-    color: #333; /* Dark text color */
-    font-family: 'Roboto', sans-serif; /* Updated font family */
+    background-color: #f9f9f9; /* Slightly lighter background color */
+    color: #444; /* Darker text color for better contrast */
+    font-family: 'Roboto', sans-serif;
 }
 
 .brand {
-    font-family: 'Press Start 2P', cursive; /* Pixel-style font for the brand */
-    font-size: 2.5rem; /* Increased font size */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #4285f4; /* Soft blue color for the brand */
+    color: #3498db; /* Softer blue color for the brand */
 }
 
 .red-o {
-    color: #d32f2f; /* Dark red color for emphasis */
+    color: #e74c3c; /* Softer red color for emphasis */
 }
 
 .thin {
@@ -20,22 +20,22 @@ body {
 }
 
 .light-bg {
-    background-color: #f4f4f4; /* Light background color for cards */
-    color: #333; /* Dark text color */
+    background-color: #fff; /* White background color for cards */
+    color: #555; /* Slightly darker text color for better contrast on white */
 }
 
 .dark-bg {
-    background-color: #e0e0e0; /* Light gray background color for masthead text */
+    background-color: #dcdcdc; /* Lighter gray background color for masthead text */
 }
 
 .main-bg {
-    background-color: #f4f4f4; /* Light background color for main content */
+    background-color: #f9f9f9;
 }
 
 .card {
-    border: 2px solid #ddd; /* Light gray border for the cards */
-    background-color: #fff; /* White background color for cards */
-    color: #333; /* Dark text color */
+    border: 2px solid #ddd;
+    background-color: #fff;
+    color: #555;
 }
 
 .image-container {
@@ -47,11 +47,11 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #4285f4; /* Soft blue color for the flash */
+    background-color: #3498db;
 }
 
 .author {
-    color: #4285f4; /* Soft blue color for the author */
+    color: #3498db;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -68,8 +68,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #e0e0e0; /* Light gray background color for masthead text */
-    color: #333; /* Dark text color for masthead text */
+    background-color: #dcdcdc;
+    color: #444;
     text-align: center;
 }
 
@@ -85,7 +85,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #e0e0e0; /* Light gray background color for skew */
+    background: #dcdcdc;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -94,12 +94,12 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #4285f4; /* Soft blue color for links */
+    color: #3498db;
 }
 
 .post-link:hover,
 .page-link {
-    color: #d32f2f; /* Dark red color for link hover and page links */
+    color: #e74c3c;
 }
 
 .post-title {
@@ -109,40 +109,40 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: #666; /* Medium gray color for post subtitles */
+    color: #777;
 }
 
 .btn-signup {
-    background-color: #4285f4; /* Soft blue color for signup button */
-    color: #fff; /* White text color for signup button */
+    background-color: #3498db;
+    color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff; /* White background color for signup button hover and active states */
-    color: #4285f4; /* Soft blue color for signup button hover and active states */
+    background-color: #fff;
+    color: #3498db;
 }
 
 .link {
-    color: #4285f4; /* Soft blue color for links */
+    color: #3498db;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #333; /* Dark text color for link hover and active states */
+    color: #444;
     text-decoration: underline;
 }
 
 .btn-like {
-    color: #d32f2f; /* Dark red color for like button */
+    color: #e74c3c;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #d32f2f; /* Dark red color for like button hover and active states */
+    color: #e74c3c;
     background: transparent;
     border: none;
 }

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
+from django.views.generic.detail import DetailView
 from .models import Game
 
 class GameListView(generic.ListView):
@@ -7,10 +8,10 @@ class GameListView(generic.ListView):
     template_name = 'index.html'
     context_object_name = 'games'
 
-# class GameDetailView(DetailView):
-#     model = Game
-#     template_name = 'game_detail.html'
-#     context_object_name = 'game'
+class GameDetailView(DetailView):
+    model = Game
+    template_name = 'game_detail.html'
+    context_object_name = 'game'
 
 # class UserReviewsView(View):
 #     def get(self, request, game_id):

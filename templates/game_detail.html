@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ game.title }}</h1>
+
+    <div>
+        <img src="{{ game.featured_image.url }}" alt="{{ game.title }}" style="max-width: 100%;">
+    </div>
+
+    <p><strong>Developer:</strong> {{ game.developer }}</p>
+    <p><strong>Release Date:</strong> {{ game.release_date }}</p>
+    <p><strong>Rating:</strong> {{ game.rating }}</p>
+
+    <hr>
+
+    <h2>Description</h2>
+    <p>{{ game.description }}</p>
+
+    <p><a href="{% url 'game_detail' pk=game.pk %}">View Details</a></p>
+
+    <!-- Add more details as needed -->
+
+{% endblock %}
