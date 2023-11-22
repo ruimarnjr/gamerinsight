@@ -1,16 +1,18 @@
 body {
-    background-color: #F9FAFC;
+    background-color: #f4f4f4; /* Light background color */
+    color: #333; /* Dark text color */
+    font-family: 'Roboto', sans-serif; /* Updated font family */
 }
 
 .brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
+    font-family: 'Press Start 2P', cursive; /* Pixel-style font for the brand */
+    font-size: 2.5rem; /* Increased font size */
     font-weight: 700;
-    color: #4A4A4F;
+    color: #4285f4; /* Soft blue color for the brand */
 }
 
 .red-o {
-    color: #E84610;
+    color: #d32f2f; /* Dark red color for emphasis */
 }
 
 .thin {
@@ -18,20 +20,22 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #f4f4f4; /* Light background color for cards */
+    color: #333; /* Dark text color */
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #e0e0e0; /* Light gray background color for masthead text */
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #f4f4f4; /* Light background color for main content */
 }
 
 .card {
-    border: none;
-    background-color: transparent;
+    border: 2px solid #ddd; /* Light gray border for the cards */
+    background-color: #fff; /* White background color for cards */
+    color: #333; /* Dark text color */
 }
 
 .image-container {
@@ -43,11 +47,11 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #4285f4; /* Soft blue color for the flash */
 }
 
 .author {
-    color: white;
+    color: #4285f4; /* Soft blue color for the author */
     margin: 4px;
     text-transform: uppercase;
 }
@@ -56,15 +60,17 @@ body {
     margin-top: 10px;
     overflow: hidden;
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 33vh;
     width: 100%;
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
+    background-color: #e0e0e0; /* Light gray background color for masthead text */
+    color: #333; /* Dark text color for masthead text */
+    text-align: center;
 }
 
 .masthead-image {
@@ -79,7 +85,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #e0e0e0; /* Light gray background color for skew */
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -88,12 +94,12 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: #4285f4; /* Soft blue color for links */
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #d32f2f; /* Dark red color for link hover and page links */
 }
 
 .post-title {
@@ -103,40 +109,40 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: #666; /* Medium gray color for post subtitles */
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    background-color: #4285f4; /* Soft blue color for signup button */
+    color: #fff; /* White text color for signup button */
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #fff; /* White background color for signup button hover and active states */
+    color: #4285f4; /* Soft blue color for signup button hover and active states */
 }
 
 .link {
-    color: #23BBBB;
+    color: #4285f4; /* Soft blue color for links */
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: #333; /* Dark text color for link hover and active states */
     text-decoration: underline;
 }
 
 .btn-like {
-    color: #E84610;
+    color: #d32f2f; /* Dark red color for like button */
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #d32f2f; /* Dark red color for like button hover and active states */
     background: transparent;
     border: none;
 }
