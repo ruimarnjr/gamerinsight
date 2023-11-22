@@ -20,7 +20,7 @@
     <hr>
 
     <h2>Description</h2>
-    <p>{{ game.description }}</p>
+    <p>{{ game.description|safe }}</p>
 
     <p><a href="{% url 'game_detail' pk=game.pk %}">View Details</a></p>
 
