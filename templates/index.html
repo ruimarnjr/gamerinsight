@@ -4,30 +4,21 @@
 <div class="container mt-5">
     <div class="row">
         {% for game in games %}
-        <div class="col-md-4">
-            <div class="card mb-4">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <img src="{% if game.image %}{{ game.image.url }}{% else %}https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg{% endif %}" class="card-img-top" alt="{{ game.title }}">
                 <div class="card-body">
-                    <div class="image-container">
-                        {% if game.image %}
-                        <img class="card-img-top" src="{{ game.image.url }}" alt="{{ game.title }}">
-                        {% else %}
-                        <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Placeholder Image" width="100%">
-                        {% endif %}
-                        <div class="image-flash">
-                            <p class="developer">Developer: {{ game.developer }}</p>
-                        </div>
-                    </div>
-                    <div class="game-details">
-                        <h2 class="card-title"><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></h2>
-                        <p class="card-text">{{ game.description|striptags|truncatechars:100 }}</p>
-                        <hr />
-                        <p class="card-text text-muted h6">{{ game.release_date }} <i class="fas fa-star"></i>
-                            {{ game.rating }}</p>
-                    </div>
+                    <h5 class="card-title"><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></h5>
+                    <p class="card-text">{{ game.description|striptags|truncatechars:100 }}</p>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text text-muted">{{ game.release_date }} <i class="fas fa-star"></i> {{ game.rating }}</p>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+
+
 {% endblock %}
