@@ -123,15 +123,15 @@ body {
     color: #3498db;
 }
 
-.link {
-    color: #3498db;
-    text-decoration: none;
+a {
+    color: #e74c3c; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+    font-weight: bold;
 }
 
-.link:hover,
-.link:active {
-    color: #444;
-    text-decoration: underline;
+a:hover {
+    color: grey 
 }
 
 .btn-like {
@@ -145,4 +145,51 @@ body {
     color: #e74c3c;
     background: transparent;
     border: none;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-text {
+    color: #fff;
+}
+
+.main-bg {
+    background-color: #f4f4f4;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.footer i {
+    font-size: 24px;
+    margin-right: 15px;
 }
