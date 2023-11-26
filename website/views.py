@@ -13,11 +13,11 @@ class GameDetailView(DetailView):
     template_name = 'game_detail.html'
     context_object_name = 'game'
 
-# class UserReviewsView(View):
-#     def get(self, request, game_id):
-#         game = get_object_or_404(Game, pk=game_id)
-#         reviews = Review.objects.filter(game=game)
-#         return render(request, 'user_reviews.html', {'game': game, 'reviews': reviews})
+class UserReviewsView(View):
+    def get(self, request, game_id):
+        game = get_object_or_404(Game, pk=game_id)
+        reviews = Review.objects.filter(game=game)
+        return render(request, 'review_game.html', {'game': game, 'reviews': reviews})
 
 # class UserProfileView(View):
 #     def get(self, request, user_id):

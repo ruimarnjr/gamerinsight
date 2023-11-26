@@ -18,6 +18,7 @@ class Game(models.Model):
     genre = models.CharField(max_length=100)
     platform = models.CharField(max_length=50)
     developer = models.CharField(max_length=255)
+    
 
     def __str__(self):
         return self.title
@@ -26,7 +27,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     rating = models.IntegerField()
-    content = SummernoteTextField()  
+    content = SummernoteTextField()
     date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

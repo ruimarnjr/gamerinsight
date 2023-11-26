@@ -21,6 +21,15 @@
             <img src="{{ game.featured_image.url }}" width="100%">
             {% endif %}
         </div>
+        <form method="post" action="{% url 'review_game' pk=game.pk %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+        
+            <!-- Add a star rating field in your ReviewForm -->
+            <input type="number" name="rating" min="1" max="5" required>
+        
+            <button type="submit">Submit Review</button>
+        </form>
     </div>
 </div>
 
