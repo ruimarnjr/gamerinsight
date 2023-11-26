@@ -6,7 +6,7 @@
         {% for game in games %}
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100">
-                <img src="{% if game.image %}{{ game.image.url }}{% else %}https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg{% endif %}" class="card-img-top" alt="{{ game.title }}">
+                <img src="{% if game.featured_image %}{{ game.featured_image.url }}{% else %}https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg{% endif %}" class="card-img-top" alt="{{ game.title }}">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></h5>
                     <p class="card-text">{{ game.description|striptags|truncatechars:100 }}</p>

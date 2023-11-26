@@ -17,7 +17,6 @@
         <div class="d-none d-md-block col-md-6">
             <!-- The featured image URL goes in the src attribute -->
             {% if "placeholder" in game.featured_image.url %}
-            <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
             {% else %}
             <img src="{{ game.featured_image.url }}" width="100%">
             {% endif %}
