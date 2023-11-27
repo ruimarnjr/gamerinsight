@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+{% load crispy_forms_tags %}
 
 <div class="container mt-5">
     <div class="row">
@@ -21,17 +21,17 @@
             <img src="{{ game.featured_image.url }}" width="100%">
             {% endif %}
         </div>
-        <form method="post" action="{% url 'review_game' pk=game.pk %}">
+      <!-- Display Comment Form -->
+      {% if user.is_authenticated %}
+        <h2>Leave a Comment</h2>
+        <form method="post" style="margin-top: 1.3em">
+            {{ comment_form | crispy }}
             {% csrf_token %}
-            {{ form.as_p }}
-        
-            <!-- Add a star rating field in your ReviewForm -->
-            <input type="number" name="rating" min="1" max="5" required>
-        
-            <button type="submit">Submit Review</button>
+          <button type="submit" class="btn btn-signup btn-lg">Submit Comment</button>
         </form>
-    </div>
-</div>
+      {% else %}
+        <p>Login to leave a comment.</p>
+      {% endif %}
 
 
-{% endblock %}
+{% endblock content %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import UserProfile, Game, Review, Comment, AdminActivity
+from .models import UserProfile, Game, Comment, AdminActivity, Review
 
 class CommentInline(admin.StackedInline):
     model = Comment
@@ -14,7 +14,6 @@ class GameAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
     list_display = ('title', 'release_date', 'genre', 'platform', 'developer')
     search_fields = ['title', 'developer']
-    inlines = [ReviewInline]
 
 class ReviewAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
@@ -23,11 +22,10 @@ class ReviewAdmin(SummernoteModelAdmin):
     list_filter = ('rating', 'date_posted')
     inlines = [CommentInline]
 
-class CommentAdmin(SummernoteModelAdmin):
-    summernote_fields = ('content',)
+class CommentAdmin(admin.ModelAdmin):
     list_display = ('user', 'review', 'date_posted')
-    search_fields = ['user__username', 'review__game__title']
-    list_filter = ('date_posted',)
+    list_filter = ('date_posted', 'review__game__title')
+    search_fields = ('user__username', 'review__game__title')
     actions = ['approve_comments']
 
     def approve_comments(self, request, queryset):

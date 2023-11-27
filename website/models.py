@@ -36,7 +36,7 @@ class Review(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
-    content = SummernoteTextField()  
+    content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
