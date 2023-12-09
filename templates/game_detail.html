@@ -12,7 +12,6 @@
             <hr>
             <h2>Description</h2>
             <p>{{ game.description|safe }}</p>
-            <p><a href="{% url 'game_detail' pk=game.pk %}">View Details</a></p>
         </div>
         <div class="d-none d-md-block col-md-6">
             <!-- The featured image URL goes in the src attribute -->
@@ -21,7 +20,32 @@
             <img src="{{ game.featured_image.url }}" width="100%">
             {% endif %}
         </div>
+        <div class="col-md-8 card mb-4 mt-3">
+          <h3 class="mb-3">Comments:</h3>
+          <div class="card-body">
+              {% for comment in comments %}
+              <div class="comment mb-4">
+                  <p class="font-weight-bold">
+                      <span class="text-muted font-weight-normal">
+                          {{ comment.created_on|date:"F d, Y H:i" }}
+                      </span> by {{ comment.name }}
+                  </p>
+                  <p class="comment-body">
+                      {{ comment.body | linebreaks }}
+                  </p>
+                  {% if not forloop.last %}
+                      <hr class="my-4">
+                  {% endif %}
+              </div>
+              {% endfor %}
+          </div>
+        </div>     
       <!-- Display Comment Form -->
+      {% if commented %}
+      <div class="alert alert-success" role="alert">
+          Your comment is awaiting approval
+      </div>
+      {% else %}
       {% if user.is_authenticated %}
         <h2>Leave a Comment</h2>
         <form method="post" style="margin-top: 1.3em">
@@ -31,6 +55,7 @@
         </form>
       {% else %}
         <p>Login to leave a comment.</p>
+      {% endif %}
       {% endif %}
 
 

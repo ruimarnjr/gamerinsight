@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from django.views import generic, View
 from django.views.generic.detail import DetailView
 from .models import Game
@@ -11,6 +12,7 @@ class Home(generic.TemplateView):
 class GameListView(generic.ListView):
     model = Game
     template_name = 'games.html'
+    queryset = Game.objects.filter(status=1).order_by('-created_on')
     context_object_name = 'games'
     paginate_by = 6
 
@@ -20,81 +22,54 @@ class GameDetailView(DetailView):
     context_object_name = 'game'
     paginate_by = 6
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['comment_form'] = CommentForm()
-        return context
+    def get(self, request, pk):
+        """
+        Retrieve the game and related comments from the database
+        """
+        queryset = Game.objects.all()
+        game = get_object_or_404(queryset, pk=pk)
+        comments = game.comments.filter(approved=True).order_by("-created_on")
 
-    def post(self, request, *args, **kwargs):
-        game = self.get_object()
-        comment_form = CommentForm(request.POST)
+        return render(
+            request,
+            "game_detail.html",
+            {
+                "game": game,
+                "comments": comments,
+                "commented": False,
+                "comment_form": CommentForm(),
+            },
+        )
+
+    def post(self, request, pk):
+        """
+        This method is called when a POST request is made to the view
+        via the comment form or the meal plan form.
+        """
+        queryset = Game.objects.filter(status=1)
+    
+    # Then, use 'queryset' to get 'game'
+        game = get_object_or_404(queryset, pk=pk)
+        comments = game.comments.filter(approved=True).order_by("-created_on")
+        comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
-            comment.user = request.user
             comment.game = game
             comment.save()
-            # Optionally, you can add a success message here
+            messages.success(self.request, 'Comment successfully added')
         else:
-            # Optionally, you can add an error message here
-            pass
+            comment_form = CommentForm()
 
-        return render(request, 'game_detail.html', {'game': game, 'comment_form': comment_form})
-
-class UserReviewsView(View):
-    def get(self, request, game_id):
-        game = get_object_or_404(Game, pk=game_id)
-        reviews = Review.objects.filter(game=game)
-        return render(request, 'review_game.html', {'game': game, 'reviews': reviews})
-
-# class UserProfileView(View):
-#     def get(self, request, user_id):
-#         user_profile = get_object_or_404(UserProfile, user_id=user_id)
-#         return render(request, 'user_profile.html', {'user_profile': user_profile})
-
-# class SubmitReviewView(View):
-#     def get(self, request, game_id):
-#         game = get_object_or_404(Game, pk=game_id)
-#         form = ReviewForm()
-#         return render(request, 'submit_review.html', {'form': form, 'game': game})
-
-#     def post(self, request, game_id):
-#         game = get_object_or_404(Game, pk=game_id)
-
-#         form = ReviewForm(request.POST)
-#         if form.is_valid():
-#             review = form.save(commit=False)
-#             review.game = game
-#             review.user = request.user
-#             review.save()
-#             return redirect('user_reviews', game_id=game_id)
-
-#         return render(request, 'submit_review.html', {'form': form, 'game': game})
-
-# class EditReviewView(View):
-#     def get(self, request, review_id):
-#         review = get_object_or_404(Review, pk=review_id, user=request.user)
-#         form = ReviewForm(instance=review)
-#         return render(request, 'edit_review.html', {'form': form, 'review': review})
-
-#     def post(self, request, review_id):
-#         review = get_object_or_404(Review, pk=review_id, user=request.user)
-
-#         form = ReviewForm(request.POST, instance=review)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('user_reviews', game_id=review.game.pk)
-
-#         return render(request, 'edit_review.html', {'form': form, 'review': review})
-
-# class DeleteReviewView(View):
-#     def post(self, request, review_id):
-#         review = get_object_or_404(Review, pk=review_id, user=request.user)
-#         game_id = review.game.pk
-#         review.delete()
-#         return redirect('user_reviews', game_id=game_id)
-
-# class UserActivityFeedView(View):
-#     def get(self, request, user_id):
-#         activities = AdminActivity.objects.filter(user_id=user_id)
-#         return render(request, 'user_activity_feed.html', {'activities': activities})
+        return render(
+            request, 
+            'game_detail.html', 
+            {
+                'game': game, 
+                'comment_form': comment_form, 
+                'commented': True,
+                'comments': comments
+            },
+        )
