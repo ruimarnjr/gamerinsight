@@ -4,15 +4,21 @@ from django.views.generic.detail import DetailView
 from .models import Game
 from .forms import CommentForm
 
+class Home(generic.TemplateView):
+    """This view is used to display the home page"""
+    template_name = "index.html"
+
 class GameListView(generic.ListView):
     model = Game
-    template_name = 'index.html'
+    template_name = 'games.html'
     context_object_name = 'games'
+    paginate_by = 6
 
 class GameDetailView(DetailView):
     model = Game
     template_name = 'game_detail.html'
     context_object_name = 'game'
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

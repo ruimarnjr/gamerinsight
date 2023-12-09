@@ -34,8 +34,8 @@ class Review(models.Model):
         return f"{self.user.username} - {self.game.title}"
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  default=1)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, default=1)
     content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
 

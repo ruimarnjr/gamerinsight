@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        {% for game in games %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <img src="{% if game.featured_image %}{{ game.featured_image.url }}{% else %}https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg{% endif %}" class="card-img-top" alt="{{ game.title }}">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></h5>
+                    <p class="card-text">{{ game.description|striptags|truncatechars:100 }}</p>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text text-muted">{{ game.release_date }} <i class="fas fa-star"></i> {{ game.rating }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
