@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.views import generic, View
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
-from .models import Game
-from .forms import CommentForm
+from .models import Game, GameCollection
+from .forms import CommentForm, GameCollectionForm 
 
 class Home(generic.TemplateView):
     """This view is used to display the home page"""
@@ -15,6 +16,7 @@ class GameListView(generic.ListView):
     queryset = Game.objects.filter(status=1).order_by('-created_on')
     context_object_name = 'games'
     paginate_by = 6
+
 
 class GameDetailView(DetailView):
     model = Game
@@ -73,3 +75,25 @@ class GameDetailView(DetailView):
                 'comments': comments
             },
         )
+
+
+class GameCollectionView(LoginRequiredMixin, View):
+    """This view renders the logged-in user's Game Collection"""
+
+    def get(self, request):
+        """
+        Filters the GameCollection table by user and creates a dictionary with
+        status and game collection item as a key, value pair.
+        """
+        user_game_collection = GameCollection.objects.filter(user=request.user)
+
+        status_choices = dict(GameCollection.STATUS_CHOICES)
+        gamecollection = {}
+
+        for ind, status_str in status_choices.items():
+            status_game_collection = user_game_collection.filter(status=ind).first()
+            gamecollection[status_str] = status_game_collection.game if status_game_collection else None
+
+        return render(request, 'game_collection.html', {'gamecollection': gamecollection})
+
+
