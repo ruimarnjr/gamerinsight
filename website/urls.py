@@ -1,5 +1,6 @@
 from . import views
 from .views import GameCollectionView
+from .views import GameDetailView
 from django.urls import path
 
 urlpatterns = [

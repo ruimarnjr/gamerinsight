@@ -20,6 +20,48 @@
             <img src="{{ game.featured_image.url }}" width="100%">
             {% endif %}
         </div>
+         <!-- Game action buttons -->
+<div class="action-buttons-outer d-block">
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-outline-dark mp-button rounded-pill mr-2"
+        data-bs-toggle="modal" data-bs-target="#gameCollectionModal">
+        <span><i class="fas fa-plus pr-1"></i></span>
+        Add to Game Collection
+    </button>
+    <!-- Game Collection Modal -->
+    <div class="modal fade" id="gameCollectionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gameCollectionModalLabel">Select Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" class="add-game-to-collection-form">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        {{ gamecollection_form | crispy }}
+                        <div class="form-group">
+                            <label for="gameStatus" class="form-label">Select Status:</label>
+                            <select class="form-select" id="gameStatus" name="status">
+                                {% for status, status_str in gamecollection_form.fields.status.choices %}
+                                    <option value="{{ status }}">{{ status_str }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-dark btn-sm">
+                            <span><i class="fas fa-calendar-plus pr-1"></i></span>
+                            Add to Game Collection
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
         <div class="col-md-8 card mb-4 mt-3">
           <h3 class="mb-3">Comments:</h3>
           <div class="card-body">

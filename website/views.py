@@ -94,6 +94,7 @@ class GameCollectionView(LoginRequiredMixin, View):
             status_game_collection = user_game_collection.filter(status=ind).first()
             gamecollection[status_str] = status_game_collection.game if status_game_collection else None
 
-        return render(request, 'game_collection.html', {'gamecollection': gamecollection})
+        gamecollection_form = GameCollectionForm()
+        return render(request, 'game_collection.html', {'gamecollection': gamecollection, 'gamecollection_form': gamecollection_form})
 
 

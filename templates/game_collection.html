@@ -22,20 +22,19 @@
                 </div>
                 {% if game %}
                 {% if "placeholder" in game.image.url %}
-                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
-                    class="card-img-top" alt="placeholder image">
                 {% else %}
-                <img src="{{ game.image.url }}" alt="games image" class="card-img-top">
+                <img src="{{ game.featured_image.url }}" alt="games image" class="card-img-top">
                 {% endif %}
                 <div class="card-body">
-                    <h3 class="card-title recipe-detail-title text-center text-truncate">{{ game.title }}</h3>
-                    <a href="{% url 'game_detail' pk=game.games.pk %}" class="stretched-link"
-                        aria-label="recipe-detail"></a>
+                    <h3 class="card-title game-detail-title text-center text-truncate">{{ game.title }}</h3>
+                    <a href="{% url 'game_detail' pk=game.pk %}" class="stretched-link"
+
+                        aria-label="game-detail"></a>
                 </div>
                 {% else %}
                 <i class="fas fa-calendar-plus mp-icon fa-6x card-img-top"></i>
                 <div class="card-body">
-                    <h3 class="card-title recipe-detail-title text-center">Add Game</h3>
+                    <h3 class="card-title game-detail-title text-center">Add Game</h3>
                     <a href="{% url 'games' %}" class="stretched-link" aria-label="games"></a>
                 </div>
                 {% endif %}
