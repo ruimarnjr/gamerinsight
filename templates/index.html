@@ -3,27 +3,23 @@
 {% block content %}
 
 <!-- Hero section -->
-<section>
-    <div class="container px-2 py-3">
-        <div class="row flex-md-row-reverse py-3 m-0">
-            <div class="col-md-7 col-lg-5 p-0 pl-md-5 align-self-center">
-                <img src="https://assets-prd.ignimgs.com/2022/09/23/top25modernpcgames-blogroll-1663951042311.jpg" class="img-fluid game-hero-image" alt="game_hero">
-            </div>
-            <div class="col-md-5 col-lg-7 hero-text-outer text-center">
-                {% if user.is_authenticated %}
-                    <h1 class="mt-4 mb-2 hero-text">Welcome back, {{ user.username }}!</h1>
-                    <div class="lead mt-4">
-                        Explore new games and challenges.
-                    </div>
-                {% else %}
-                    <h1 class="mt-4 mb-2 hero-text">Embark on Epic Gaming Adventures!</h1>
-                    <div class="lead mt-4">
-                        Join the gaming community <a class="btn btn-sm btn-outline-secondary rounded-pill ml-2 my-2 my-lg-0" style="color: red;"
-                            href="{% url 'account_signup' %}">Sign Up Now</a>
-                    </div>
-                {% endif %}
+<section class="container px-2 py-3">
+    <div class="row flex-md-row-reverse py-3 m-0">
+        <div class="col-md-7 col-lg-5 p-0 pl-md-5 align-self-center">
+            <img src="https://assets-prd.ignimgs.com/2022/09/23/top25modernpcgames-blogroll-1663951042311.jpg" class="img-fluid game-hero-image" alt="game_hero">
+        </div>
+        <div class="col-md-5 col-lg-7 hero-text-outer text-center">
+            {% if user.is_authenticated %}
+                <h1 class="mt-4 mb-2 hero-text">Welcome back, {{ user.username }}!</h1>
+                <div class="lead mt-4">
+                    Explore new games and challenges.
                 </div>
-            </div>
+            {% else %}
+                <h1 class="mt-4 mb-2 hero-text">Embark on Epic Gaming Adventures!</h1>
+                <div class="lead mt-4">
+                    Join the gaming community <a class="btn btn-sm btn-outline-secondary rounded-pill ml-2 my-2 my-lg-0" style="color: red;" href="{% url 'account_signup' %}">Sign Up Now</a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -69,7 +65,6 @@
             </div>
         </div>
     </div>
-    
 </section>
 
 {% endblock %}

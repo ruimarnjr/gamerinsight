@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env
 
@@ -29,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-ruimarnjr-gamerinsight-vwasnxl16v6.ws-eu106.gitpod.io', 'gamerinsight-3420a19788ac.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-ruimarnjr-gamerinsight-vwasnxl16v6.ws-eu107.gitpod.io', 'gamerinsight-3420a19788ac.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -58,6 +59,14 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -157,6 +166,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-ruimarnjr-gamerinsight-vwasnxl16v6.ws-eu106.gitpod.io',
+    'https://8000-ruimarnjr-gamerinsight-vwasnxl16v6.ws-eu107.gitpod.io',
     # Add other trusted origins as needed
 ]

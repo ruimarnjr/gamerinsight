@@ -31,7 +31,6 @@ class Comment(models.Model):
     email = models.EmailField(default='')
     body = models.TextField()
     created_on = models.DateTimeField(auto_now=True)
-    approved = models.BooleanField(default=False)
     
     class Meta:
         """ To display the comments by created_on in ascending order """
@@ -41,9 +40,9 @@ class Comment(models.Model):
         return f"Comment {self.body} by {self.name}"
 
 
-class GameCollection(models.Model):
+class GameCollectionItem(models.Model):
     """Model for Game Collection"""
-    STATUS_CHOICES = [
+    STAGE_CHOICES = [
         (0, "Playing"),
         (1, "Queued"),
         (2, "Completed "),
@@ -55,14 +54,14 @@ class GameCollection(models.Model):
         User, on_delete=models.CASCADE, related_name="game_collection")
     game = models.ForeignKey(
         Game, on_delete=models.CASCADE, related_name="game_collection_item")
-    status = models.IntegerField(choices=STATUS_CHOICES, default='0')
+    stage = models.IntegerField(choices=STAGE_CHOICES, default='0')
 
     class Meta:
-        """To display the Game Collection Item by status in ascending order"""
-        ordering = ['status']
+        """To display the Game Collection Item by stage in ascending order"""
+        ordering = ['stage']
 
     def __str__(self):
-        return f"Current Status: {self.status} by {self.user}"
+        return f"Current Stage {self.stage} by {self.user}"
 
     
 

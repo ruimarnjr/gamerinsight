@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 
 {% load crispy_forms_tags %}
 
@@ -17,88 +18,79 @@
             <!-- The featured image URL goes in the src attribute -->
             {% if "placeholder" in game.featured_image.url %}
             {% else %}
-            <img src="{{ game.featured_image.url }}" width="100%">
+            <img src="{{ game.featured_image.url }}" class="img-fluid" alt="Game Image">
             {% endif %}
         </div>
-         <!-- Game action buttons -->
-<div class="action-buttons-outer d-block">
-    {% if user.is_authenticated %}
-    <button type="button" class="btn btn-outline-dark mp-button rounded-pill mr-2"
-        data-bs-toggle="modal" data-bs-target="#gameCollectionModal">
-        <span><i class="fas fa-plus pr-1"></i></span>
-        Add to Game Collection
-    </button>
-    <!-- Game Collection Modal -->
-    <div class="modal fade" id="gameCollectionModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="gameCollectionModalLabel">Select Status</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="post" class="add-game-to-collection-form">
-                    {% csrf_token %}
-                    <div class="modal-body">
-                        {{ gamecollection_form | crispy }}
-                        <div class="form-group">
-                            <label for="gameStatus" class="form-label">Select Status:</label>
-                            <select class="form-select" id="gameStatus" name="status">
-                                {% for status, status_str in gamecollection_form.fields.status.choices %}
-                                    <option value="{{ status }}">{{ status_str }}</option>
-                                {% endfor %}
-                            </select>
+        <!-- Game action buttons -->
+        <div class="action-buttons-outer d-block mt-3">
+            {% if user.is_authenticated %}
+            <button type="button" class="btn btn-outline-dark mp-button rounded-pill me-2"
+                data-bs-toggle="modal" data-bs-target="#gameCollectionModal">
+                <span><i class="fas fa-plus pr-1"></i></span>
+                Add to Game Collection
+            </button>
+            <!-- Game Collection Modal -->
+            <div class="modal fade" id="gameCollectionModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="gameCollectionModalLabel">Select Stage</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        <form method="post" class="add-game-to-collection-form" action="{% url 'game_detail' pk=game.id %}">
+                            <div class="modal-body">
+                                {{ gamecollection_form | crispy }}
+                                {% csrf_token %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline-dark btn-sm">
+                                    <span><i class="fas fa-calendar-plus pr-1"></i></span>
+                                    Add to Game Collection
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-dark btn-sm">
-                            <span><i class="fas fa-calendar-plus pr-1"></i></span>
-                            Add to Game Collection
-                        </button>
-                    </div>
-                </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-8 card mb-4 mt-3">
+            <h3 class="mb-3">Comments:</h3>
+            <div class="card-body">
+                {% for comment in comments %}
+                <div class="comment mb-4">
+                    <p class="font-weight-bold">
+                        <span class="text-muted font-weight-normal">
+                            {{ comment.created_on|date:"F d, Y H:i" }}
+                        </span> by {{ comment.name }}
+                    </p>
+                    <p class="comment-body">
+                        {{ comment.body | linebreaks }}
+                    </p>
+                    {% if not forloop.last %}
+                        <hr class="my-4">
+                    {% endif %}
+                </div>
+                {% endfor %}
             </div>
         </div>
+        <!-- Display Comment Form -->
+        <div class="col-md-8 mt-3">
+            {% if user.is_authenticated %}
+            <h2>Leave a Comment</h2>
+            <form method="post" style="margin-top: 1.3em">
+                {{ comment_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-dark">Submit Comment</button>
+            </form>
+            {% else %}
+            <p>Login to leave a comment.</p>
+            {% endif %}
+        </div>
     </div>
-    {% endif %}
 </div>
-
-        <div class="col-md-8 card mb-4 mt-3">
-          <h3 class="mb-3">Comments:</h3>
-          <div class="card-body">
-              {% for comment in comments %}
-              <div class="comment mb-4">
-                  <p class="font-weight-bold">
-                      <span class="text-muted font-weight-normal">
-                          {{ comment.created_on|date:"F d, Y H:i" }}
-                      </span> by {{ comment.name }}
-                  </p>
-                  <p class="comment-body">
-                      {{ comment.body | linebreaks }}
-                  </p>
-                  {% if not forloop.last %}
-                      <hr class="my-4">
-                  {% endif %}
-              </div>
-              {% endfor %}
-          </div>
-        </div>     
-      <!-- Display Comment Form -->
-      {% if commented %}
-      <div class="alert alert-success" role="alert">
-          Your comment is awaiting approval
-      </div>
-      {% else %}
-      {% if user.is_authenticated %}
-        <h2>Leave a Comment</h2>
-        <form method="post" style="margin-top: 1.3em">
-            {{ comment_form | crispy }}
-            {% csrf_token %}
-          <button type="submit" class="btn btn-signup btn-lg">Submit Comment</button>
-        </form>
-      {% else %}
-        <p>Login to leave a comment.</p>
-      {% endif %}
-      {% endif %}
 
 
 {% endblock content %}

@@ -13,34 +13,32 @@
     <br>
 
     <!-- Game Collection Cards -->
-    <div class="row card-deck justify-content-center">
-        {% for status, game in gamecollection.items %}
-        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
-            <div class="card card-detail mealplan-card mb-3 shadow-sm mx-auto mx-sm-2">
-                <div class="card-header mealplan-card-header">
-                    <h2 class="card-title mealplan-title">{{ status }}</h2>
+    <div class="row g-3 justify-content-center">
+        {% for stage, game_item in gamecollection.items %}
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h2 class="card-title">{{ stage }}</h2>
+                    </div>
+                    {% if game_item %}
+                        <!-- Display game details, adjust as needed -->
+                        <div class="card-body">
+                            <h3 class="card-title game-detail-title text-center text-truncate">{{ game_item.game.title }}</h3>
+                            <img src="{{ game_item.game.featured_image.url }}" alt="games image" class="card-img-top">
+                            <a href="{% url 'game_detail' pk=game_item.game.pk %}" class="stretched-link" aria-label="game-detail"></a>
+                        </div>
+                    {% else %}
+                        <!-- Display placeholder or add game link -->
+                        <i class="fas fa-calendar-plus mp-icon fa-6x card-img-top"></i>
+                        <div class="card-body">
+                            <h3 class="card-title game-detail-title text-center">Add Game</h3>
+                            <a href="{% url 'games' %}" class="stretched-link" aria-label="games"></a>
+                        </div>
+                    {% endif %}
                 </div>
-                {% if game %}
-                {% if "placeholder" in game.image.url %}
-                {% else %}
-                <img src="{{ game.featured_image.url }}" alt="games image" class="card-img-top">
-                {% endif %}
-                <div class="card-body">
-                    <h3 class="card-title game-detail-title text-center text-truncate">{{ game.title }}</h3>
-                    <a href="{% url 'game_detail' pk=game.pk %}" class="stretched-link"
-
-                        aria-label="game-detail"></a>
-                </div>
-                {% else %}
-                <i class="fas fa-calendar-plus mp-icon fa-6x card-img-top"></i>
-                <div class="card-body">
-                    <h3 class="card-title game-detail-title text-center">Add Game</h3>
-                    <a href="{% url 'games' %}" class="stretched-link" aria-label="games"></a>
-                </div>
-                {% endif %}
             </div>
-        </div>
         {% endfor %}
     </div>
+</div>
 
-{% endblock %}   
+{% endblock %}
