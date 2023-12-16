@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.detail import DetailView
 from .models import Game, GameCollectionItem, Comment
-from .forms import CommentForm, GameCollectionForm 
+from .forms import CommentForm, GameCollectionForm, GameForm
 
 class Home(generic.TemplateView):
     """This view is used to display the home page"""
@@ -196,3 +196,85 @@ class DeleteComment(
         """ Return to recipe detail view when comment deleted sucessfully"""
         game = self.object.game
         return reverse_lazy('game_detail', kwargs={'pk': game.pk})
+
+class AddGame(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = Game
+    form_class = GameForm
+    template_name = 'add_game.html'
+    success_message = "%(title)s was created successfully"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            title=self.object.title,
+        )
+
+class UpdateGame(
+        LoginRequiredMixin, UserPassesTestMixin,
+        SuccessMessageMixin, generic.UpdateView
+        ):
+    """
+    This view is used to allow logged in users to edit their own games
+    """
+    model = Game
+    form_class = GameForm  # Make sure to use the correct GameForm
+    template_name = 'update_game.html'
+    success_message = "%(title)s was edited successfully"
+
+    def form_valid(self, form):
+        """
+        This method is called when valid form data has been posted.
+        The signed-in user is set as the author of the game.
+        """
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        """
+        Prevent another user from updating other's games
+        """
+        game = self.get_object()
+        return game.author == self.request.user
+
+    def get_success_message(self, cleaned_data):
+        """
+        Override the get_success_message() method to add the game title
+        into the success message.
+        source: https://docs.djangoproject.com/en/4.0/ref/contrib/messages/
+        """
+        return self.success_message % dict(
+            cleaned_data, title=self.object.title
+        )
+
+
+class DeleteGame(
+        LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
+        ):
+    """
+    This view is used to allow logged in users to delete their own games
+    """
+    model = Game
+    template_name = 'delete_game.html'
+    success_message = "Game deleted successfully"
+    success_url = reverse_lazy('my_games')
+
+    def test_func(self):
+        """
+        Prevent another user from deleting other's games
+        """
+        game = self.get_object()
+        return game.author == self.request.user
+
+    def delete(self, request, *args, **kwargs):
+        """
+        This function is used to display success message given
+        SuccessMessageMixin cannot be used in generic.DeleteView.
+        Credit: https://stackoverflow.com/questions/24822509/
+        success-message-in-deleteview-not-shown
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteGame, self).delete(request, *args, **kwargs)

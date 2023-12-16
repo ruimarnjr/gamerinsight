@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from cloudinary.models import CloudinaryField
 from django_summernote.fields import SummernoteTextField
 
@@ -9,8 +10,9 @@ class Game(models.Model):
     title = models.CharField(max_length=255)
     featured_image = CloudinaryField('image', default='placeholder')
     description = SummernoteTextField()
+    review = SummernoteTextField(null=True, default='')
     created_on = models.DateTimeField(auto_now=True)  
-    release_date = models.DateField()
+    release_date = models.DateField(null=True, blank=True)
     status = models.IntegerField(choices=STATUS, default=1)
     genre = models.CharField(max_length=100)
     platform = models.CharField(max_length=50)
@@ -19,6 +21,10 @@ class Game(models.Model):
     class Meta:
         """To display the recipes by created_on in descending order"""
         ordering = ['-created_on']
+
+    def get_absolute_url(self):
+        """Get url after user adds/edits recipe"""
+        return reverse('game_detail', kwargs={'pk': self.pk})
     
     def __str__(self):
         return self.title

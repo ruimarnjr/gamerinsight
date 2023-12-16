@@ -9,10 +9,12 @@
             <h1>{{ game.title }}</h1>
             <p><strong>Developer:</strong> {{ game.developer }}</p>
             <p><strong>Release Date:</strong> {{ game.release_date }}</p>
-            <p><strong>Rating:</strong> {{ game.rating }}</p>
             <hr>
             <h2>Description</h2>
             <p>{{ game.description|safe }}</p>
+            <hr>
+            <h2>Review</h2>
+            <p>{{ game.review|safe }}</p>
         </div>
         <div class="d-none d-md-block col-md-6">
             <!-- The featured image URL goes in the src attribute -->

@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+    <!-- Add a button for adding a game -->
+    <div class="text-end mb-10">
+        <a href="{% url 'add_game' %}" class="btn btn-primary" style="margin-top: 20px; margin-right: 20px;">Add a Game</a>
+    </div>
 <div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {% for game in games %}
@@ -12,7 +17,7 @@
                     <p class="card-text">{{ game.description|striptags|truncatechars:100 }}</p>
                 </div>
                 <div class="card-footer">
-                    <p class="card-text text-muted">{{ game.release_date }} <i class="fas fa-star"></i> {{ game.rating }}</p>
+                    <p class="card-text text-muted">{{ game.release_date }}
                 </div>
             </div>
         </div>

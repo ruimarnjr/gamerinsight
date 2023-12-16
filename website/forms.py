@@ -1,5 +1,6 @@
 from django import forms
-from .models import Comment, GameCollectionItem
+from django_summernote.widgets import SummernoteWidget
+from .models import Comment, GameCollectionItem, Game
 
 class CommentForm(forms.ModelForm):
     """ Create Comment Form """
@@ -20,4 +21,24 @@ class GameCollectionForm(forms.ModelForm):
         model = GameCollectionItem
         fields = ('stage',)
 
+class GameForm(forms.ModelForm):
+    """ Create Recipe Form """
+    def __init__(self, *args, **kwargs):
+        super(GameForm, self).__init__(*args, **kwargs)
+        self.fields['review'].widget = forms.Textarea(attrs={'rows': 3})
+
+    class Meta:
+        """
+        Get recipe model, choose fields to display and add summernote widget
+        """
+        model = Game
+        fields = [
+            'title', 
+            'featured_image',
+            'review',
+            'status',
+        ]
+        widgets = {
+            'review': SummernoteWidget(),
+        }
    
