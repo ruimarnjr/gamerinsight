@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.views import generic, View
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.detail import DetailView
-from .models import Game, GameCollectionItem
+from .models import Game, GameCollectionItem, Comment
 from .forms import CommentForm, GameCollectionForm 
 
 class Home(generic.TemplateView):
@@ -130,4 +132,67 @@ class GameCollection(LoginRequiredMixin, View):
         return render(
             request, 'game_collection.html', {'gamecollection': gamecollection})
 
+class EditComment(
+        LoginRequiredMixin, UserPassesTestMixin,
+        SuccessMessageMixin, generic.UpdateView):
 
+    """
+    This view is used to allow logged in users to edit their own comments
+    """
+    model = Comment
+    form_class = CommentForm
+    template_name = 'edit_comment.html'
+    success_message = "Comment edited successfully"
+
+    def form_valid(self, form):
+        """
+        This method is called when valid form data has been posted.
+        The signed in user is set as the author of the comment.
+        """
+        form.instance.name = self.request.user.username
+        return super().form_valid(form)
+
+    def test_func(self):
+        """
+        Prevent another user from editing user's comments
+        """
+        comment = self.get_object()
+        return comment.name == self.request.user.username
+
+    def get_success_url(self):
+        """ Return to recipe detail view when comment updated sucessfully"""
+        game = self.object.game
+        return reverse_lazy('game_detail', kwargs={'pk': game.pk})
+
+
+class DeleteComment(
+        LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+
+    """
+    This view is used to allow logged in users to delete their own comments
+    """
+    model = Comment
+    template_name = 'delete_comment.html'
+    success_message = "Comment deleted successfully"
+
+    def test_func(self):
+        """
+        Prevent another user from deleting user's comments
+        """
+        comment = self.get_object()
+        return comment.name == self.request.user.username
+
+    def delete(self, request, *args, **kwargs):
+        """
+        This function is used to display success message given
+        SuccessMessageMixin cannot be used in generic.DeleteView.
+        Credit: https://stackoverflow.com/questions/24822509/
+        success-message-in-deleteview-not-shown
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteComment, self).delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        """ Return to recipe detail view when comment deleted sucessfully"""
+        game = self.object.game
+        return reverse_lazy('game_detail', kwargs={'pk': game.pk})

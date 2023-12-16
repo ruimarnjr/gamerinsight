@@ -46,8 +46,8 @@ class GameCollectionItem(models.Model):
         (0, "Playing"),
         (1, "Queued"),
         (2, "Completed "),
-        (4, "Interested"),
-        (3, "Abandoned"),        
+        (3, "Interested"),
+        (4, "Abandoned"),        
     ]
 
     user = models.ForeignKey(
@@ -64,5 +64,3 @@ class GameCollectionItem(models.Model):
         return f"Current Stage {self.stage} by {self.user}"
 
     
-
-
