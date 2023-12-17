@@ -121,7 +121,7 @@ class GameCollection(LoginRequiredMixin, View):
             1: 'Queued',
             2: 'Completed',
             3: 'Interested',
-            4: 'Abandoned'        
+            4: 'Abandoned',        
         }
         gamecollection = {}
 
