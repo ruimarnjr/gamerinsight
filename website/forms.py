@@ -35,8 +35,10 @@ class GameForm(forms.ModelForm):
         fields = [
             'title', 
             'featured_image',
+            'genre',
+            'platform_played',
+            'developer',
             'review',
-            'status',
         ]
         widgets = {
             'review': SummernoteWidget(),

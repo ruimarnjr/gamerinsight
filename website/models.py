@@ -9,13 +9,13 @@ STATUS = ((0, "Save for later"), (1, "Publish Now"))
 class Game(models.Model):
     title = models.CharField(max_length=255)
     featured_image = CloudinaryField('image', default='placeholder')
-    description = SummernoteTextField()
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="games", null=True, default='')
     review = SummernoteTextField(null=True, default='')
     created_on = models.DateTimeField(auto_now=True)  
-    release_date = models.DateField(null=True, blank=True)
     status = models.IntegerField(choices=STATUS, default=1)
     genre = models.CharField(max_length=100)
-    platform = models.CharField(max_length=50)
+    platform_played = models.CharField(max_length=50)
     developer = models.CharField(max_length=255)
 
     class Meta:

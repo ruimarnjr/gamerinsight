@@ -7,11 +7,10 @@
     <div class="row">
         <div class="col-md-6">
             <h1>{{ game.title }}</h1>
+            <p><strong>Author:</strong> {{ game.author }}</p>
+            <p><strong>Genre:</strong> {{ game.genre }}</p>
+            <p><strong>Platform Played:</strong> {{ game.platform_played }}</p>
             <p><strong>Developer:</strong> {{ game.developer }}</p>
-            <p><strong>Release Date:</strong> {{ game.release_date }}</p>
-            <hr>
-            <h2>Description</h2>
-            <p>{{ game.description|safe }}</p>
             <hr>
             <h2>Review</h2>
             <p>{{ game.review|safe }}</p>

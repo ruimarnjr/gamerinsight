@@ -3,9 +3,9 @@ from django_summernote.admin import SummernoteModelAdmin
 from .models import Game, Comment, GameCollectionItem
 
 class GameAdmin(SummernoteModelAdmin):
-    summernote_fields = ('description',)
+    summernote_fields = ('review',)
     list_filter = ('status', 'created_on')
-    list_display = ('title', 'status', 'release_date', 'genre', 'platform', 'developer', 'created_on')
+    list_display = ('title', 'status', 'author', 'genre', 'platform_played', 'developer', 'created_on')
     search_fields = ['title', 'developer']
 
 class CommentAdmin(admin.ModelAdmin):

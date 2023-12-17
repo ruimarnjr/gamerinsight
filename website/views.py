@@ -213,7 +213,7 @@ class AddGame(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
             title=self.object.title,
         )
 
-class UpdateGame(
+class EditGame(
         LoginRequiredMixin, UserPassesTestMixin,
         SuccessMessageMixin, generic.UpdateView
         ):
@@ -222,7 +222,7 @@ class UpdateGame(
     """
     model = Game
     form_class = GameForm  # Make sure to use the correct GameForm
-    template_name = 'update_game.html'
+    template_name = 'edit_game.html'
     success_message = "%(title)s was edited successfully"
 
     def form_valid(self, form):
@@ -260,7 +260,7 @@ class DeleteGame(
     model = Game
     template_name = 'delete_game.html'
     success_message = "Game deleted successfully"
-    success_url = reverse_lazy('my_games')
+    success_url = reverse_lazy('games')
 
     def test_func(self):
         """

@@ -17,11 +17,13 @@
                     <p class="card-text">{{ game.description|striptags|truncatechars:100 }}</p>
                 </div>
                 <div class="card-footer">
-                    <p class="card-text text-muted">{{ game.release_date }}
+                    <p class="card-text text-muted">{{ game.created_on }}
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+{% include "paginator.html" %}
+
 {% endblock %}
