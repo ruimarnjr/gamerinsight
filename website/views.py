@@ -17,7 +17,7 @@ class GameListView(generic.ListView):
     template_name = 'games.html'
     queryset = Game.objects.filter(status=1).order_by('-created_on')
     context_object_name = 'games'
-    paginate_by = 6
+    paginate_by = 8
 
 
 class GameDetailView(DetailView):
