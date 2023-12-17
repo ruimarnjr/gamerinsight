@@ -5,7 +5,7 @@
     <!-- Add a button for adding a game -->
     <div class="container">
         <div class="text-end mb-10">
-            <a href="{% url 'add_game' %}" class="btn btn-primary" style="margin-top: 20px; margin-right: 20px;">Add a Game</a>
+            <a href="{% url 'add_game' %}" class="btn btn-primary btn-dark" style="margin-top: 20px; margin-right: 20px;">Add a Game</a>
         </div>
         <div class="container mt-5">
             <div class="masonry-grid">
@@ -13,7 +13,6 @@
                 <div class="masonry-item">
                     <img src="{% if game.featured_image %}{{ game.featured_image.url }}{% else %}https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg{% endif %}" class="game-image" alt="{{ game.title }}">
                     <h5 class="card-title"><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></h5>
-                    <p class="card-text">{{ game.description|striptags|truncatechars:50 }}</p>
                     <p class="card-text text-muted">{{ game.created_on }}</p>
                 </div>
                 {% endfor %}

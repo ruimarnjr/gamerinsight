@@ -102,37 +102,37 @@ body {
     color: #e74c3c;
 }
 
-    .masonry-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
     }
 
-    .masonry-item {
-        margin-bottom: 20px;
-        break-inside: avoid;
+.masonry-item {
+    margin-bottom: 20px;
+    break-inside: avoid;
     }
 
     /* Style for the game image */
-    .game-image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px; /* Optional: add rounded corners */
+.game-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px; /* Optional: add rounded corners */
     }
 
     /* Additional styles for card content */
-    .card-title {
-        font-size: 1.2rem;
-        margin-top: 10px;
+.card-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
     }
 
-    .card-text {
-        font-size: 0.9rem;
+.card-text {
+    font-size: 0.9rem;
     }
 
-    .text-muted {
-        font-size: 0.8rem;
+.text-muted {
+    font-size: 0.8rem;
     }
 
 .post-title {
@@ -143,6 +143,12 @@ body {
 .post-subtitle {
     margin-left: 5%;
     color: #777;
+}
+
+.pagination .page-item.active .page-link.selected {
+    background-color: #343a40; /* Change this color to your desired dark color */
+    border-color: #343a40; /* Optional: Set border color to match background color */
+    color: #fff; /* Set text color to contrast with background */
 }
 
 .btn-signup {

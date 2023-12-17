@@ -22,7 +22,7 @@
       {% for i in paginator.page_range %}
         {% if page_obj.number == i %}
           <li class="page-item active" aria-current="page">
-            <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+            <span class="page-link selected">{{ i }} <span class="sr-only">(current)</span></span>
           </li>
         {% else %}
           <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
