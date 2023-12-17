@@ -34,14 +34,14 @@
             <!--Code taken and adapted from PP4_My_Meal_Planner by AliOKeeffe-->
             {% if user.is_authenticated and game.author == user %}
             <span class="d-block d-md-inline">
-                <a class="action-btn btn btn-info btn-edit rounded-pill mb-md-0" href="{% url 'edit_recipe' game.pk %}"
-                    aria-label="edit-recipe">
+                <a class="action-btn btn btn-info btn-edit rounded-pill mb-md-0" href="{% url 'edit_game' game.pk %}"
+                    aria-label="edit-game">
                     <i class="fas fa-edit"></i> Edit
                 </a>
             </span>
             <span class="d-block d-md-inline">
-                <a class="action-btn btn btn-info btn-danger btn-delete rounded-pill mb-md-0" href="{% url 'delete_recipe' game.pk %}"
-                    aria-label="delete-recipe">
+                <a class="action-btn btn btn-info btn-danger btn-delete rounded-pill mb-md-0" href="{% url 'delete_game' game.pk %}"
+                    aria-label="delete-game">
                     <i class="fas fa-times"></i> Delete
                 </a>
             </span>

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}The Easy Eater | Delete Recipe{% endblock %}
+{% block title %}Gamer Insight | Delete Game{% endblock %}
 {% block content %}
 
 <div class="container">
-    <h1 class="page-title">Delete Recipe</h1>
+    <h1 class="page-title">Delete Game</h1>
     <hr class="home-break">
     <br>
-    <p class="text-center mt-3">Are you sure you want to delete this recipe?</p>
+    <p class="text-center mt-3">Are you sure you want to delete this game?</p>
     <div class="row justify-content-center">
         <div class="col-11 col-md-6 col-lg-4 mt-3">
-            <!-- Delete Recipe Form -->
+            <!-- Delete Game Form -->
             <form class="text-center" method="POST">
                 {%  csrf_token  %}
                 <div>
