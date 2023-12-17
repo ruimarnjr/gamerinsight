@@ -102,6 +102,23 @@ body {
     color: #e74c3c;
 }
 
+.aspect-ratio-box {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* Adjust this value to set the aspect ratio (height/width) */
+    overflow: hidden;
+}
+
+.game-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
 .post-title {
     margin-top: 20%;
     margin-left: 5%;
