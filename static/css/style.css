@@ -12,7 +12,7 @@ body {
 }
 
 .red-o {
-    color: #e74c3c; /* Softer red color for emphasis */
+    color: #FF6666; /* Softer red color for emphasis */
 }
 
 .thin {
@@ -124,7 +124,7 @@ body {
 }
 
 a {
-    color: #e74c3c; 
+    color: #FF6666;
     text-decoration: none; 
     transition: color 0.3s ease; 
     font-weight: bold;
@@ -164,10 +164,6 @@ body {
     color: #fff;
 }
 
-.navbar-toggler-icon {
-    background-color: #fff;
-}
-
 .navbar-nav .nav-item {
     margin-right: 15px;
 }
@@ -190,6 +186,6 @@ body {
 }
 
 .footer i {
-    font-size: 24px;
+    font-size: 25px;
     margin-right: 15px;
 }
