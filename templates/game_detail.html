@@ -1,12 +1,12 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% block title %}Gamer Insight | {{ game.title }}{% endblock %}
 {% block content %}
-
 {% load crispy_forms_tags %}
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>{{ game.title }}</h1>
+<div class="container mt-5 container-mt-5">
+    <div class="row row-game-details">
+        <div class="col-md-6 col-details">
+            <h1><strong>{{ game.title }}</strong></h1>
             <p><strong>Author:</strong> {{ game.author }}</p>
             <p><strong>Genre:</strong> {{ game.genre }}</p>
             <p><strong>Platform Played:</strong> {{ game.platform_played }}</p>
@@ -15,7 +15,7 @@
             <h2>Review</h2>
             <p>{{ game.review|safe }}</p>
         </div>
-        <div class="d-none d-md-block col-md-6">
+        <div class="col-md-6">
             <!-- The featured image URL goes in the src attribute -->
             {% if "placeholder" in game.featured_image.url %}
             {% else %}
@@ -23,28 +23,32 @@
             {% endif %}
         </div>
         <!-- Game action buttons -->
-        <div class="action-buttons-outer d-block mt-3">
+        <!--Code taken from PP4_My_Meal_Planner by AliOKeeffe-->
+        <div class="action-buttons-outer mt-3">
             {% if user.is_authenticated %}
             <button type="button" class="btn btn-outline-dark mp-button rounded-pill me-2"
                 data-bs-toggle="modal" data-bs-target="#gameCollectionModal">
                 <span><i class="fas fa-plus pr-1"></i></span>
                 Add to Game Collection
             </button>
+            <!--Code taken and adapted from PP4_My_Meal_Planner by AliOKeeffe-->
             {% if user.is_authenticated and game.author == user %}
-                            <span>
-                                <a class="action-btn btn btn-info" href="{% url 'edit_recipe' game.pk %}"
-                                    aria-label="edit-recipe">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </span>
-                            <span>
-                                <a class="action-btn btn btn-info" href="{% url 'delete_recipe' game.pk %}"
-                                    aria-label="delete-recipe">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </span>
-                            {% endif %}
+            <span class="d-block d-md-inline">
+                <a class="action-btn btn btn-info btn-edit rounded-pill mb-md-0" href="{% url 'edit_recipe' game.pk %}"
+                    aria-label="edit-recipe">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+            </span>
+            <span class="d-block d-md-inline">
+                <a class="action-btn btn btn-info btn-danger btn-delete rounded-pill mb-md-0" href="{% url 'delete_recipe' game.pk %}"
+                    aria-label="delete-recipe">
+                    <i class="fas fa-times"></i> Delete
+                </a>
+            </span>
+            {% endif %}
+        </div>
             <!-- Game Collection Modal -->
+            <!--Code taken and adapted from PP4_My_Meal_Planner by AliOKeeffe-->
             <div class="modal fade" id="gameCollectionModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -71,49 +75,56 @@
             </div>
             {% endif %}
         </div>
-        <div class="col-md-8 card mb-4 mt-3">
-            <h3 class="mb-3">Comments:</h3>
-            <div class="card-body">
-                {% for comment in comments %}
-                <div class="comment mb-4">
-                    <p class="font-weight-bold">
-                        <span class="text-muted font-weight-normal">
-                            {{ comment.created_on|date:"F d, Y H:i" }}
-                        </span> by {{ comment.name }}
-                    </p>
-                    {% if user.is_authenticated and user.username == comment.name %}
-                    <span class="comment-action-btn pl-2">
-                        <a href="{% url 'edit_comment' comment.id %}" aria-label="edit-comment"><i
-                                class="fas fa-edit link-primary"></i></a>
-                        <a href="{% url 'delete_comment' comment.id %}" aria-label="delete-comment"><i
-                                class="fas fa-times"></i></a>
-                    </span>
-                    {% endif %}
-                    <p class="comment-body">
-                        {{ comment.body | linebreaks }}
-                    </p>
-                    {% if not forloop.last %}
-                        <hr class="my-4">
+        <!-- Display Comment Form -->
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-8">
+                    {% if user.is_authenticated %}
+                    <h3>Leave a Comment</h3>
+                    <form method="post" style="margin-top: 1.3em">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-dark mt-2">Submit Comment</button>
+                    </form>
+                    {% else %}
+                    <p>Login to leave a comment.</p>
                     {% endif %}
                 </div>
-                {% endfor %}
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-8 mb-4">
+                    <h3 class="mb-3">Comments:</h3>
+                    <div class="card-body">
+                        {% for comment in comments %}
+                        <div class="comment mb-4">
+                            <p class="font-weight-bold">
+                                <span class="text-muted font-weight-normal">
+                                    {{ comment.created_on|date:"F d, Y H:i" }}
+                                </span> by {{ comment.name }}
+                            </p>
+                            <!--Code taken from PP4_My_Meal_Planner by AliOKeeffe-->
+                            {% if user.is_authenticated and user.username == comment.name %}
+                            <span class="comment-action-btn pl-2">
+                                <a href="{% url 'edit_comment' comment.id %}" aria-label="edit-comment"><i
+                                        class="fas fa-edit link-primary"></i></a>
+                                <a href="{% url 'delete_comment' comment.id %}" aria-label="delete-comment"><i
+                                        class="fas fa-times"></i></a>
+                            </span>
+                            {% endif %}
+                            <p class="comment-body">
+                                {{ comment.body | linebreaks }}
+                            </p>
+                            {% if not forloop.last %}
+                                <hr class="my-4">
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- Display Comment Form -->
-        <div class="col-md-8 mt-3">
-            {% if user.is_authenticated %}
-            <h2>Leave a Comment</h2>
-            <form method="post" style="margin-top: 1.3em">
-                {{ comment_form | crispy }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-dark">Submit Comment</button>
-            </form>
-            {% else %}
-            <p>Login to leave a comment.</p>
-            {% endif %}
-        </div>
-    </div>
-</div>
-
+        
+        
+        
 
 {% endblock content %}
