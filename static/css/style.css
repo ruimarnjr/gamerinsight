@@ -1,6 +1,6 @@
 body {
-    background-color: #f9f9f9; /* Slightly lighter background color */
-    color: #444; /* Darker text color for better contrast */
+    background-color: #e0e0e0; 
+    color: #444; 
     font-family: 'Roboto', sans-serif;
 }
 
@@ -8,11 +8,11 @@ body {
     font-family: 'Press Start 2P', cursive;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #3498db; /* Softer blue color for the brand */
+    color: #3498db; 
 }
 
 .red-o {
-    color: #FF6666; /* Softer red color for emphasis */
+    color: #FF6666; 
 }
 
 .thin {
@@ -20,12 +20,12 @@ body {
 }
 
 .light-bg {
-    background-color: #fff; /* White background color for cards */
-    color: #555; /* Slightly darker text color for better contrast on white */
+    background-color: #fff; 
+    color: #555; 
 }
 
 .dark-bg {
-    background-color: #dcdcdc; /* Lighter gray background color for masthead text */
+    background-color: #dcdcdc; 
 }
 
 .main-bg {
@@ -118,10 +118,10 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 8px; /* Optional: add rounded corners */
+    border-radius: 8px; 
     }
 
-    /* Additional styles for card content */
+    
 .card-title {
     font-size: 1.2rem;
     margin-top: 10px;
@@ -146,9 +146,9 @@ body {
 }
 
 .pagination .page-item.active .page-link.selected {
-    background-color: #343a40; /* Change this color to your desired dark color */
-    border-color: #343a40; /* Optional: Set border color to match background color */
-    color: #fff; /* Set text color to contrast with background */
+    background-color: #343a40; 
+    border-color: #343a40; 
+    color: #fff; 
 }
 
 .btn-signup {
@@ -238,7 +238,6 @@ body {
 
 /* Updated Button Styles */
 .action-btn {
-    /* Common styles for both buttons */
     color: #fff; /* Text color */
     border: none;
     padding: 8px 16px;
@@ -250,12 +249,12 @@ body {
 
 /* Edit Button Styles */
 .btn-edit {
-    background-color: #3498db; /* Set your desired background color */
+    background-color: #3498db; 
 }
 
 /* Delete Button Styles */
 .btn-delete {
-    background-color: #e74c3c; /* Set your desired background color */
+    background-color: #e74c3c; 
 }
 
 
