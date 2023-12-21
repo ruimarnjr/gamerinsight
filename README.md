@@ -467,7 +467,6 @@ To clone this repository follow the below steps:
 
 ## Credits
 
-- [W3Schools](https://www.w3schools.com/)
 - [Stack Overflow](https://stackoverflow.com/)
 - Images: [Pexels](https://www.pexels.com/), [Ign Games](https://www.ign.com/ie), [Retrododo](https://retrododo.com/)
 - [Pagination](https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html)
