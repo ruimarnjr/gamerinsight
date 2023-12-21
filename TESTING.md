@@ -1,3 +1,34 @@
+# Table of Contents
+- [User Story Testing](#user-story-testing)
+- [Validators](#validators)
+  * [HTML](#html)
+  * [CSS](#css)
+  * [Javascript](#javascript)
+  * [Python](#python)
+  * [Lighthouse](#lighthouse)
+- [Browser Compatibility Testing Summary](#browser-compatibility-testing-summary)
+- [Manual Testing](#manual-testing)
+  * [Site Navigation](#site-navigation)
+  * [Home Page](#home-page)
+  * [Games Page](#games-page)
+  * [Game Detail Page](#game-detail-page)
+  * [Add Game Page](#add-game-page)
+  * [Update Game Page](#update-game-page)
+  * [Confirm Delete Game Page](#confirm-delete-game-page)
+  * [Game Collection Page](#game-collection-page)
+  * [Django All Auth Pages](#django-all-auth-pages)
+- [Bugs](#bugs)
+  * [Fixed Bugs](#fixed-bugs)
+    + [Bootstrap Styling Conflicts](#bootstrap-styling-conflicts)
+    + [Django Template Rendering Errors](#django-template-rendering-errors)
+    + [Django Form Validation Problems](#django-form-validation-problems)
+    + [Django Static Files Configuration](#django-static-files-configuration)
+    + [Django Model Form Issues](#django-model-form-issues)
+    + [Django Database Connection Problems](#django-database-connection-problems)
+    
+    
+  * [Unfixed bugs:](#unfixed-bugs)
+
 ## User Story Testing
 
 ### USER STORY: Dive into Game Details
@@ -416,7 +447,7 @@ The website underwent thorough compatibility testing across popular browsers, in
 - Bug: Issues with rendering Django templates, causing unexpected behavior or missing content.
 - Fix: Double-check template syntax, ensure proper template inheritance, and troubleshoot template rendering issues.
 
-### Django Form Validation Problems:
+#### Django Form Validation Problems:
 - Bug: Django form validation not working as expected or not displaying error messages properly.
 - Fix: Confirm proper form field validation in Django views, and customize error messages as needed.
 
