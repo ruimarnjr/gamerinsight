@@ -191,7 +191,7 @@ Run through [Jshint](https://jshint.com/)
 
 ## Python
 
-Run through [Pep8](http://pep8online.com/), no errors found.
+Run through [Pep8](https://pep8ci.herokuapp.com/), no errors found.
 
 ### Admin.py
 <img src="documents/images/admin-py.png">

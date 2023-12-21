@@ -450,14 +450,13 @@ To clone this repository follow the below steps:
 
 ## Frameworks - Libraries - Programs Used
 - [Django](https://www.djangoproject.com/): Main python framework used in the development of this project
-- [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): authentication library used to create the user accounts
+- [Django-allauth](https://docs.allauth.org/en/latest/): authentication library used to create the user accounts
 - [PostgreSQL](https://www.postgresql.org/) was used as the database for this project.
 - [Heroku](https://dashboard.heroku.com/login) - was used as the cloud based platform to deploy the site on.
 - [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - Used for overall development and tweaking, including testing responsiveness and performance.
 - [GitHub](https://github.com/) - Used for version control and agile tool.
 - [Google Fonts](https://fonts.google.com/) - Used to import and alter fonts on the page.
-- [W3C](https://www.w3.org/) - Used for HTML & CSS Validation.
-- [PEP8 Online](http://pep8online.com/) - used to validate all the Python code
+- [PEP8 CI](https://pep8ci.herokuapp.com/) - used to validate all the Python code
 - [Jshint](https://jshint.com/) - used to validate javascript
 - [Favicon](https://favicon.io/) - Used to create the favicon.
 - [Summernote](https://summernote.org/): A WYSIWYG editor to allow users to edit their posts
