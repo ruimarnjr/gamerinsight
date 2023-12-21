@@ -6,6 +6,45 @@ Live link - [Gamer Insight](https://gamerinsight-3420a19788ac.herokuapp.com/)
 
 <img src="documents/images/site-mockup.png">
 
+- [Gamer Insight](#gamer-insight)
+  * [User Experience (UX)](#user-experience-ux)
+    + [User Stories](#user-stories)
+    + [Design](#design)
+      - [Colour Scheme](#colour-scheme)
+      - [Imagery](#imagery)
+      - [Fonts](#fonts)
+  * [Database Schema](#database-schema)
+    + [Game Model](#game-model)
+    + [Comment Model](#comment-model)
+    + [Game Collection Item Model](#game-collection-item-model)
+  * [Testing](#testing)
+  * [Features](#features)
+    + [Header](#header)
+    + [Nav Bar](#nav-bar)
+    + [Home Page](#home-page)
+    + [Discover The Game Oasis](#discover-the-game-oasis)
+    + [Footer](#footer)
+    + [Sign Up Page](#signup-page)
+    + [Login Page](#login-page)
+    + [Logout Page](#logout-page)
+    + [Games](#games)
+    + [Add Game Form Section](#add-game-form-section)
+    + [Game Detail](#game-detail)
+    + [Edit Game Form Section](#edit-game-form-section)
+    + [Add to Game Collection Button](#add-to-game-collection-button)
+    + [Game Collection Modal](#game-collection-modal)
+    + [Comment Form Section](#comment-form-section)
+    + [Comment Display Section](#comment-display-section)
+    + [Comment Collection Cards Section](#game-collection-cards-section)
+    + [Error Pages](#error-pages)
+    
+  * [Deployment - Heroku](#deployment---heroku)
+  * [Forking this repository](#forking-this-repository)
+  * [Cloning this repository](#cloning-this-repository)
+  * [Languages](#languages)
+  * [Frameworks - Libraries - Programs Used](#frameworks---libraries---programs-used)
+  * [Credits](#credits)
+
 ## User Experience (UX)
 
 ### Agile
@@ -95,12 +134,14 @@ These descriptions highlight not only the existing imagery on the Gamer Insight 
 
 **created_on**: The date and time when the game entry was created.
 
-**status**: An integer field with choices reflecting the status of the game (e.g., Released, In Development).
-genre: The genre of the game.
+**status**: Whether the game was posted or not.
+
+**genre**: The genre of the game.
 
 **platform_played**: The gaming platform on which the game is played.
 
 **developer**: The developer or development studio responsible for the game.
+
 Additionally, methods like get_absolute_url and __str__ have been implemented for ease of use and representation.
 
 ### Comment Model
@@ -117,7 +158,7 @@ Additionally, methods like get_absolute_url and __str__ have been implemented fo
 
 **created_on**: The date and time when the comment was created.
 
-### GameCollectionItem Model
+### Game Collection Item Model
 
 #### The GameCollectionItem model represents a user's interaction with a game, indicating whether they are playing, have the game queued, completed it, are interested, or have abandoned it. It includes the following fields:
 
@@ -128,6 +169,10 @@ Additionally, methods like get_absolute_url and __str__ have been implemented fo
 **stage**: An integer field with choices reflecting different stages of interaction with the game (e.g., Playing, Queued, Completed).
 
 This model enables users to organize and track their gaming experiences within their collection, providing valuable insights into their gaming preferences and activities.
+
+## Testing
+
+All the tests can be found [here](/TESTING.md)
 
 ## Features
 
@@ -225,10 +270,6 @@ This design ensures a user-friendly browsing experience, allowing users to effor
 ### Game Detail
 
 <img src="documents/images/game-detail.png">
-
-### Game Details Section
-
-#### Title and Information:
 
  - The left column (col-details) provides essential details about the game, including its title, author, genre, platform played, and developer.
 
